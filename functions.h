@@ -11,7 +11,6 @@ struct user{
     char passWord[8];
     string email;
 };
-
 void register2(user name) ;
 bool login(user name);
 

@@ -1,7 +1,6 @@
 #include "functions.cpp"
 using namespace std;
 
-
 int main(){
     cout << "\t\tWelcome again " << char(1) << endl;
     while (true){
@@ -20,7 +19,7 @@ int main(){
              cout << "successful Login " << char(1) << endl ;
          }
          else {
-             cout << "Failed"<< endl;
+             cout << "\tFailed!"<< endl;
          }
      }
 

@@ -33,7 +33,7 @@ bool login(user name){
 //    }
     int i = 0 ;
     do {
-        c = getch();
+        c = _getch();
         if (c != 8){
             name.passWord[i] = c;
             cout << "*";
