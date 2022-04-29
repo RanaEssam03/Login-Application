@@ -8,7 +8,7 @@ int main(){
     cout << "\n1.Register\n2.Login\n3.Change Password\n4.Exit\n==>";
     int choice;
     cin >> choice;
-    cin.ignore();
+    //cin.ignore();
     if (choice == 1){
         loadData();
         register1();
