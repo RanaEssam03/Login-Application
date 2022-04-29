@@ -7,6 +7,8 @@ void register1() {
     cin >> profile[c].username;
     cout << "Email ==>";
     cin >> profile[c].email ;
+    cout << "ID ==>";
+    cin >> profile[c].id;
     cout << "Password ==>";
     cin >> profile[c].passWord;
     cout << "Password again ==>";
@@ -18,7 +20,7 @@ void register1() {
 
 }
 void check_register(){
- for(int i=0;i<100;i++){
+ for(int i=1;i<=100;i++){
      while(profile[i].username == profile[c].username){
          cout << "used username!...please try again:";
          cin>>profile[c].username;
@@ -32,9 +34,9 @@ void check_register(){
      }
 
  }
-    cout << "Thanks for registration! "<<name.username<<endl;
+    cout << "Thanks for registration! "<<profile[c].username<<endl;
     dataBase.open("dataBase.txt", ios :: app);
-    dataBase << name.username << endl << name.passWord << endl << name.email << endl<<name.id;
+    dataBase << profile[c].username << endl << profile[c].passWord << endl << profile[c].email << endl<<profile[c].id<<endl;
     dataBase.close();
     c++;
 }
@@ -51,11 +53,6 @@ bool login(user name){
     cout << "Email ==>";
     cin >> name.email ;
     cout << "Password ==>";
-//    for (int i = 0 ; i < 8 ; i++){
-//        c = getch();
-//        cout <<"*";
-//        name.passWord[i] = c;
-//    }
     int i = 0 ;
     do {
         c = _getch();
