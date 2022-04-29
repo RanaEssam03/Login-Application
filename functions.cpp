@@ -1,6 +1,5 @@
 #include "functions.h"
 
-
 void register2(user name ) {
     cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";
     string password2 ;// username, password, password2;
