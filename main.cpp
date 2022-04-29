@@ -2,17 +2,17 @@
 using namespace std;
 
 int main(){
+    loadData();
     cout << "\t\tWelcome again " << char(1) << endl;
     while (true){
     cout << "Please pick one choice : ";
     cout << "\n1.Register\n2.Login\n3.Change Password\n4.Exit\n==>";
     int choice;
     cin >> choice;
-    //cin.ignore();
+    cin.ignore();
     if (choice == 1){
-        loadData();
         register1();
-        check_register();
+        check_register(name);
     }
      if (choice == 2){
          user name ;
