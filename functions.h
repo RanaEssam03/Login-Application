@@ -14,3 +14,4 @@ struct user{
 void register2(user name) ;
 bool login(user name);
 #endif //LOGIN_APPLICATION_FUNCTIONS_H
+
