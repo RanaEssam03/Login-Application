@@ -33,6 +33,7 @@ void register1() {
     cin >> name.username;
     cout << "Email ==>";
     cin >> name.email ;
+    validate_email();
     cout << "ID ==>";
     cin >> name.id;
     cout << "Password ==>";
@@ -102,6 +103,17 @@ bool login(user name){
     }
     dataBase.close();
     return false;
+}
+void validate_email(){
+    regex form("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+    while(regex_match(name.email,form)==0){
+     cout << "invalid email!";
+     cin >> name.email;
+     regex_match(name.email,form);
+    }
+
+
+
 }
 
 
