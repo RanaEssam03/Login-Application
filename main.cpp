@@ -2,6 +2,7 @@
 using namespace std;
 
 int main(){
+    cout<<c;
     cout << "\t\tWelcome again " << char(1) << endl;
     while (true){
     cout << "Please pick one choice : ";
