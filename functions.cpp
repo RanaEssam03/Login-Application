@@ -4,48 +4,40 @@ void register1() {
     cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";
     string password ;// username, password, password2;
     cout << "\nUserName ==> ";
-    cin >> name.username;
+    cin >> profile[c].username;
     cout << "Email ==>";
-    cin >> name.email ;
+    cin >> profile[c].email ;
     cout << "Password ==>";
-    cin >> name.passWord;
+    cin >> profile[c].passWord;
     cout << "Password again ==>";
     cin>> password;
-    while(password != name.passWord){
+    while(password != profile[c].passWord){
         cout << "passwords dont match .. please try again:";
         cin >> password;
     }
 
 }
 void check_register(){
-    vector<string>file;
-    string data;
-    dataBase.open("dataBase.txt",ios::in);
-    while(!dataBase.eof()){
+ for(int i=0;i<100;i++){
+     while(profile[i].username == profile[c].username){
+         cout << "used username!...please try again:";
+         cin>>profile[c].username;
+     }
+     while(profile[i].email==profile[c].email){
+         cout << "used email!...please try again:";
+         cin >> profile[c].email;
+     }
+     while(profile[i].id==profile[c].id){
+         cout << "used id!...please try again:";
+     }
 
-        while(data == name.username){
-        cout << "The username,email or id are used before....please try again:";
-        cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";
-        string password ;// username, password, password2;
-        cout << "\nUserName ==> ";
-        cin >> name.username;
-        cout << "Email ==>";
-        cin >> name.email ;
-        cout << "Password ==>";
-        cin >> name.passWord;
-        cout << "Password again ==>";
-        cin>> password;
-        while(password != name.passWord){
-            cout << "passwords dosent match..please try again:";
-            cin >> password;
-        }
-    }}
-
-    dataBase.close();
+ }
     cout << "Thanks for registration! "<<name.username<<endl;
     dataBase.open("dataBase.txt", ios :: app);
     dataBase << name.username << endl << name.passWord << endl << name.email << endl<<name.id;
-    dataBase.close();}
+    dataBase.close();
+    c++;
+}
 
 
 
