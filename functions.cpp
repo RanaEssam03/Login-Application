@@ -22,7 +22,7 @@ void check_register(){
     string data;
     dataBase.open("dataBase.txt",ios::in);
     while(!dataBase.eof()){
-        dataBase.getline(dataBase);
+
         while(data == name.username){
         cout << "The username,email or id are used before....please try again:";
         cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";

@@ -24,6 +24,7 @@ user name;
 
 void register1() ;
 void check_register();
+void validate_email();
 bool login(user name);
 #endif //LOGIN_APPLICATION_FUNCTIONS_H
 
