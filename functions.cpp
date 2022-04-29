@@ -1,8 +1,8 @@
 #include "functions.h"
 
-void register2(user name ) {
+void register1() {
     cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";
-    string password2 ;// username, password, password2;
+    string password ;// username, password, password2;
     cout << "\nUserName ==> ";
     cin >> name.username;
     cout << "Email ==>";
@@ -10,12 +10,46 @@ void register2(user name ) {
     cout << "Password ==>";
     cin >> name.passWord;
     cout << "Password again ==>";
-    cin>> password2;
-    ofstream dataBase ;
-    dataBase.open("dataBase.txt", ios :: app);
-    dataBase << name.username << " " << name.passWord << " " << name.email << endl;
-    dataBase.close();
+    cin>> password;
+    while(password != name.passWord){
+        cout << "passwords dont match .. please try again:";
+        cin >> password;
+    }
+
 }
+void check_register(){
+    vector<string>file;
+    string data;
+    dataBase.open("dataBase.txt",ios::in);
+    while(!dataBase.eof()){
+        dataBase.getline(dataBase);
+        while(data == name.username){
+        cout << "The username,email or id are used before....please try again:";
+        cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";
+        string password ;// username, password, password2;
+        cout << "\nUserName ==> ";
+        cin >> name.username;
+        cout << "Email ==>";
+        cin >> name.email ;
+        cout << "Password ==>";
+        cin >> name.passWord;
+        cout << "Password again ==>";
+        cin>> password;
+        while(password != name.passWord){
+            cout << "passwords dosent match..please try again:";
+            cin >> password;
+        }
+    }}
+
+    dataBase.close();
+    cout << "Thanks for registration! "<<name.username<<endl;
+    dataBase.open("dataBase.txt", ios :: app);
+    dataBase << name.username << endl << name.passWord << endl << name.email << endl<<name.id;
+    dataBase.close();}
+
+
+
+
 bool login(user name){
     char c;
     cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";

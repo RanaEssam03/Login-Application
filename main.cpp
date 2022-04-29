@@ -10,8 +10,8 @@ int main(){
     cin >> choice;
     cin.ignore();
     if (choice == 1){
-        user name ;
-        register2( name );
+        register1();
+        check_register();
     }
      if (choice == 2){
          user name ;

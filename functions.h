@@ -4,14 +4,26 @@
 #include <string>
 #include <fstream>
 #include <conio.h>
+#include<regex>
+#include<cstring>
+#include<map>
+#include<vector>
 
 using namespace std;
+fstream dataBase;
 struct user{
     string username;
-    char passWord[8];
+    string passWord;
     string email;
+    string id;
 };
-void register2(user name) ;
+map<double,user>profiles;
+user name;
+
+
+
+void register1() ;
+void check_register();
 bool login(user name);
 #endif //LOGIN_APPLICATION_FUNCTIONS_H
 
