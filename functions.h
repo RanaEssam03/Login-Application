@@ -20,7 +20,7 @@ struct user{
 //map<double,user>profiles;
 user name;
 user profile[100];
-  int c;
+  int c=0;
 
 vector <user> profiles ;
 

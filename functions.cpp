@@ -48,7 +48,8 @@ void register1() {
 
 }
 void check_register(){
- for(int i=1;i<=100;i++){
+ for(int i=0;i<=100;i++){
+     if(i==c){continue;}
      while(profile[i].username == profile[c].username){
          cout << "used username!...please try again:";
          cin>>profile[c].username;
