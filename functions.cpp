@@ -3,27 +3,24 @@
 
 void loadData(){
     dataBase.open("dataBase.txt", ios:: in);
-    int k = 0 ;
-    while(!dataBase.eof()){
-        int c = 0 ;
-        while(c != 4)
-        {
-            string data;
-            getline(dataBase, data);
-            c ++;
-            profiles[k].username = data;
-            getline(dataBase, data);
-            c ++;
-            profiles[k].passWord = data;
-            getline(dataBase, data);
-            c ++;
-            profiles[k].email =data;
-            getline(dataBase, data);
-            c ++;
-            profiles[k].id =data ;
 
-        }
-        k++;
+    while(! dataBase.eof()){
+            string data;
+
+            getline(dataBase, data);
+              string temp = data;
+            profiles[temp].username = data;
+
+           getline(dataBase, data);
+            profiles[temp].passWord = data;
+
+            getline(dataBase, data);
+            profiles[temp].email =data;
+
+            getline(dataBase, data);
+            profiles[temp].id =data ;
+
+
     }
     dataBase.close();
 
@@ -36,6 +33,7 @@ void register1() {
     cin >> name.username;
     cout << "Email ==>";
     cin >> name.email ;
+    validate_email();
     cout << "ID ==>";
     cin >> name.id;
     cout << "Password ==>";
@@ -48,17 +46,18 @@ void register1() {
     }
 
 }
-void check_register(){
+void check_register(user & name ){
+    string username = name.username;
     for(int i=0;i<profiles.size();i++){
-     while(profiles[i].username == name.username){
+     while(profiles[username].username == name.username){
          cout << "used username!...please try again:";
          cin>>name.username;
      }
-     while(profiles[i].email==name.email){
+     while(profiles[username].email==name.email){
          cout << "used email!...please try again:";
          cin >> name.email;
      }
-     while(profiles[i].id==name.id){
+     while(profiles[username].id==name.id){
          cout << "used id!...please try again:";
      }
 
@@ -104,6 +103,17 @@ bool login(user name){
     }
     dataBase.close();
     return false;
+}
+void validate_email(){
+    regex form("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+"); // /w matches any character in any case
+    while(regex_match(name.email,form)==0){
+     cout << "invalid email!..please try again:";
+     cin >> name.email;
+     regex_match(name.email,form);
+    }
+
+
+
 }
 
 
