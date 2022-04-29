@@ -25,6 +25,7 @@ void loadData(){
         }
         k++;
     }
+    dataBase.close();
 
 }
 
@@ -32,42 +33,40 @@ void register1() {
     cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";
     string password ;// username, password, password2;
     cout << "\nUserName ==> ";
-    cin >> profile[c].username;
+    cin >> name.username;
     cout << "Email ==>";
-    cin >> profile[c].email ;
+    cin >> name.email ;
     cout << "ID ==>";
-    cin >> profile[c].id;
+    cin >> name.id;
     cout << "Password ==>";
-    cin >> profile[c].passWord;
+    cin >> name.passWord;
     cout << "Password again ==>";
     cin>> password;
-    while(password != profile[c].passWord){
+    while(password != name.passWord){
         cout << "passwords dont match .. please try again:";
         cin >> password;
     }
 
 }
 void check_register(){
- for(int i=0;i<=100;i++){
-     if(i==c){continue;}
-     while(profile[i].username == profile[c].username){
+    for(int i=0;i<=100;i++){
+     while(profiles[i].username == name.username){
          cout << "used username!...please try again:";
-         cin>>profile[c].username;
+         cin>>name.username;
      }
-     while(profile[i].email==profile[c].email){
+     while(profiles[i].email==name.email){
          cout << "used email!...please try again:";
-         cin >> profile[c].email;
+         cin >> name.email;
      }
-     while(profile[i].id==profile[c].id){
+     while(profiles[i].id==name.id){
          cout << "used id!...please try again:";
      }
 
  }
-    cout << "Thanks for registration! "<<profile[c].username<<endl;
+    cout << "Thanks for registration! "<<name.username<<endl;
     dataBase.open("dataBase.txt", ios :: app);
-    dataBase << profile[c].username << endl << profile[c].passWord << endl << profile[c].email << endl<<profile[c].id<<endl;
+    dataBase << name.username << endl << name.passWord << endl << name.email << endl<<name.id<<endl;
     dataBase.close();
-    c++;
 }
 
 

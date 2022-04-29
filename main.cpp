@@ -2,7 +2,6 @@
 using namespace std;
 
 int main(){
-    cout<<c;
     cout << "\t\tWelcome again " << char(1) << endl;
     while (true){
     cout << "Please pick one choice : ";
@@ -11,6 +10,7 @@ int main(){
     cin >> choice;
     cin.ignore();
     if (choice == 1){
+        loadData();
         register1();
         check_register();
     }
