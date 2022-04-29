@@ -1,5 +1,33 @@
 #include "functions.h"
 
+
+void loadData(){
+    dataBase.open("dataBase.txt", ios:: in);
+    int k = 0 ;
+    while(!dataBase.eof()){
+        int c = 0 ;
+        while(c != 4)
+        {
+            string data;
+            getline(dataBase, data);
+            c ++;
+            profiles[k].username = data;
+            getline(dataBase, data);
+            c ++;
+            profiles[k].passWord = data;
+            getline(dataBase, data);
+            c ++;
+            profiles[k].email =data;
+            getline(dataBase, data);
+            c ++;
+            profiles[k].id =data ;
+
+        }
+        k++;
+    }
+
+}
+
 void register1() {
     cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";
     string password ;// username, password, password2;

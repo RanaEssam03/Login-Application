@@ -17,11 +17,12 @@ struct user{
     string email="a";
     string id="a";
 };
-map<double,user>profiles;
+//map<double,user>profiles;
 user name;
 user profile[100];
   int c;
 
+vector <user> profiles ;
 
 
 void register1() ;
