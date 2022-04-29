@@ -17,16 +17,16 @@ struct user{
     string email="a";
     string id="a";
 };
-map<double,user>profiles;
+//map<double,user>profiles;
 user name;
-user profile[100];
-  int c;
 
+vector <user> profiles ;
 
 
 void register1() ;
 void check_register();
 void validate_email();
+void upload_data();
 bool login(user name);
 #endif //LOGIN_APPLICATION_FUNCTIONS_H
 
