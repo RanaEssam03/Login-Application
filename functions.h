@@ -12,13 +12,15 @@
 using namespace std;
 fstream dataBase;
 struct user{
-    string username;
-    string passWord;
-    string email;
-    string id;
+    string username="a";
+    string passWord="a";
+    string email="a";
+    string id="a";
 };
 map<double,user>profiles;
 user name;
+user profile[100];
+ static int c=0;
 
 
 
