@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: C:/Users/Eyad/Downloads/my-github/Login-Application
+=======
+# Install script for directory: D:/Level1 second term/Programming 1/A4/Login-Application
+>>>>>>> d552e9ebf8a20fe9e553f1be2553ef1fefb3c810
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +38,11 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
+<<<<<<< HEAD
   set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2021.3.4/bin/mingw/bin/objdump.exe")
+=======
+  set(CMAKE_OBJDUMP "C:/Program Files/JetBrains/CLion 2021.3.2/bin/mingw/bin/objdump.exe")
+>>>>>>> d552e9ebf8a20fe9e553f1be2553ef1fefb3c810
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -45,5 +53,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< HEAD
 file(WRITE "C:/Users/Eyad/Downloads/my-github/Login-Application/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "D:/Level1 second term/Programming 1/A4/Login-Application/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> d552e9ebf8a20fe9e553f1be2553ef1fefb3c810
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

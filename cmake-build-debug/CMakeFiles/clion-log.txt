@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 "C:\Program Files\JetBrains\CLion 2021.3.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2021.3.4/bin/ninja/win/ninja.exe" -G Ninja C:\Users\Eyad\Downloads\my-github\Login-Application
 -- Configuring done
 -- Generating done
 -- Build files have been written to: C:/Users/Eyad/Downloads/my-github/Login-Application/cmake-build-debug
+=======
+"C:\Program Files\JetBrains\CLion 2021.3.2\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2021.3.2/bin/ninja/win/ninja.exe" -G Ninja "D:\Level1 second term\Programming 1\A4\Login-Application"
+-- Configuring done
+-- Generating done
+-- Build files have been written to: D:/Level1 second term/Programming 1/A4/Login-Application/cmake-build-debug
+>>>>>>> d552e9ebf8a20fe9e553f1be2553ef1fefb3c810
