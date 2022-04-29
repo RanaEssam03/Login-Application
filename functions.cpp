@@ -105,9 +105,9 @@ bool login(user name){
     return false;
 }
 void validate_email(){
-    regex form("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+    regex form("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+"); // /w matches any char in any case
     while(regex_match(name.email,form)==0){
-     cout << "invalid email!";
+     cout << "invalid email!..please try again:";
      cin >> name.email;
      regex_match(name.email,form);
     }
