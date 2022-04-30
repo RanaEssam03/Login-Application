@@ -184,8 +184,10 @@ void changePassword(){
     string username, email;
     cout << "Please enter username: ";
     cin >> username;
+    /*function to check if the username exists or not*/
     cout << "please enter email :";
     cin >> email;
+    /*function to check if the email matches the username*/
     string newPassword , oldPassword, newPassword2;
     cout << "Please enter old password : ";
     cin >> oldPassword;
@@ -193,7 +195,7 @@ void changePassword(){
         cout << "wrong password!\nPlease try again: ";
         cin >> oldPassword;
     }
-    cout << "Please enter a new password:  ";   /////(function to check of the password valid or not) is missed
+    cout << "Please enter a new password:  ";   /////(function to check if the password valid or not) is missed
     cin >> newPassword;
     //isValidPassword
     cout << "Please enter the new password again:  ";
