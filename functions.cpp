@@ -139,7 +139,7 @@ void cover_password()
 
 void validate_name()
 {
-    regex form("{8-20}((\\-)*[a-zA-Z]+(\\-)*[a-zA-z]*(\\-)*");
+    regex form("{8-20}([a-zA-Z-])");
     while(regex_match(info.username,form)==0)
     {
         cout << "invalid username...please try again:";
@@ -188,6 +188,7 @@ void check_not_registered_username()
         {
             cout << "used username!...please try again :";
             cin >> info.username;
+            validate_name();
         }
     }
 }
@@ -212,6 +213,7 @@ void check_not_registered_Email()
         {
             cout << "used Email !...please try again :";
             cin >> info.email;
+            validate_email();
         }
     }
 }
