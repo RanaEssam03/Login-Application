@@ -164,7 +164,8 @@ void validate_phone_number()
 
 void validate_email()
 {
-    regex form("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.[a-zA-Z]+)+"); // /w matches any character in any case
+    //regex form("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.[a-zA-Z0-9]+)+"); // /w matches any character in any case
+    regex form("(\\w+)@(\\w+)(\\.(\\w+))+"); // /w matches any character in any case
     while(regex_match(info.email,form)==0)
     {
         cout << "invalid email!..please try again:";
