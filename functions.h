@@ -21,7 +21,7 @@ struct user{
 map<string,user>profiles;
 user name;
 
-//vector <user> profiles ;
+vector <user> data ;
 
 
 void register1() ;
@@ -32,6 +32,9 @@ void validate_username();
 void loadData();
 bool login(user name);
 void loadData();
+string encrypt( string passWord);
+void changePassword();
+void load2File();
 #endif //LOGIN_APPLICATION_FUNCTIONS_H
 
 

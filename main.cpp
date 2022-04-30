@@ -14,18 +14,18 @@ int main(){
         register1();
         check_register(name);
     }
-     if (choice == 2){
-         user name ;
-         if (login(name)){
-             cout << "successful Login " << char(1) << endl ;
-         }
-         else {
-             cout << "\tFailed!"<< endl;
-         }
-     }
+//     if (choice == 2){
+//         user name ;
+//         if (login(name)){
+//             cout << "successful Login " << char(1) << endl ;
+//         }
+//         else {
+//             cout << "\tFailed!"<< endl;
+//         }
+//     }
 
-//    else if (choice == 3)
-//        changePassword();
+    else if (choice == 3)
+        changePassword();
 
      if (choice == 4)
         break;
