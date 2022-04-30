@@ -1,14 +1,13 @@
 #include "functions.h"
 
 void loadData(){
-    user user ;
+  //  user user ;
     dataBase.open("dataBase.txt", ios:: in);
 
     while(! dataBase.eof()){
         string data;
-
         getline(dataBase, data);
-          string temp = data;
+        string temp = data;
         profiles[temp].username = data;
 
        getline(dataBase, data);
@@ -28,6 +27,7 @@ void loadData(){
 
 void registration()
 {
+    loadData();
     cout << "Username : ";          cin >> info.username;
     check_not_registered_username();
     validate_name();
@@ -47,7 +47,6 @@ void registration()
     cout << "Password : ";          cin >> info.passWord;
     repeat_password();
     is_strong_password();
-
     add_new_user();
 }
 
