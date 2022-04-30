@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "Login_Application1::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-Login_Application1-Debug-9f7647b9c3b662d5efcf.json",
-					"name" : "Login_Application1",
+					"id" : "Login_Application::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-Login_Application-Debug-6c20dd29342506621fb4.json",
+					"name" : "Login_Application",
 					"projectIndex" : 0
 				}
 			]
