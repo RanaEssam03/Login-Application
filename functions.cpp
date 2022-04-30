@@ -40,6 +40,7 @@ void registration()
     validate_email();
 
     cout << "Phone number : ";      cin >> info.phoneNumber;
+    check_not_registered_phone_number();
     validate_phone_number();
 
     cout << "password must contain at least 12 characters, uppercase and lowercase letters, numbers and at least one special character\n";
@@ -177,7 +178,7 @@ void validate_phone_number()
 
 void validate_email()
 {
-    regex form("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+"); // /w matches any character in any case
+    regex form("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.[a-zA-Z]+)+"); // /w matches any character in any case
     while(regex_match(info.email,form)==0)
     {
         cout << "invalid email!..please try again:";
@@ -188,8 +189,7 @@ void validate_email()
 }
 
 void add_new_user()
-{
-    cout << "Thanks for registration! "<<info.username<<endl;
+{   cout << "Thanks for registration! "<<info.username<<endl;
     dataBase.open("dataBase.txt", ios :: app);
     dataBase << info.username << endl << encrypt(info.passWord) << endl << info.email << endl << info.id << endl << info.phoneNumber << endl;
     dataBase.close();
