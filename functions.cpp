@@ -20,11 +20,6 @@ void loadData(){
             getline(dataBase, data);
             profiles[temp].id =data ;
 
-//            user.username = ;
-//            user.email =profiles[temp].email ;
-//            user.passWord = profiles[temp].passWord;
-//            user.phoneNumber =
-
     }
     dataBase.close();
 
