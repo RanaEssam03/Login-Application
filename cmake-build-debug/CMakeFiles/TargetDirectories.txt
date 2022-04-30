@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-C:/Users/Eyad/Downloads/my-github/Login-Application/cmake-build-debug/CMakeFiles/Login_Application.dir
+C:/Users/Eyad/Downloads/my-github/Login-Application/cmake-build-debug/CMakeFiles/Login_Application1.dir
 C:/Users/Eyad/Downloads/my-github/Login-Application/cmake-build-debug/CMakeFiles/edit_cache.dir
 C:/Users/Eyad/Downloads/my-github/Login-Application/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-=======
-D:/Level1 second term/Programming 1/A4/Login-Application/cmake-build-debug/CMakeFiles/Login_Application.dir
-D:/Level1 second term/Programming 1/A4/Login-Application/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/Level1 second term/Programming 1/A4/Login-Application/cmake-build-debug/CMakeFiles/rebuild_cache.dir
->>>>>>> d552e9ebf8a20fe9e553f1be2553ef1fefb3c810
