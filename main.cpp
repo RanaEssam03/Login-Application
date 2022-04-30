@@ -5,10 +5,9 @@ using namespace std;
 
 int main()
 {
-    cout << "\t\tWelcome again " << char(1) << endl;
-
     while (true)
     {
+        cout << "\t\tWelcome again " << char(1) << endl;
         loadData();
         cout << "\nPlease pick one choice : ";
         cout << "\n1.Register\n2.Login\n3.Change Password\n4.Exit\n==>";

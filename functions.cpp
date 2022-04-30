@@ -27,7 +27,6 @@ void loadData(){
 
 void registration()
 {
-    //loadData();
     cout << "Username : ";          cin >> info.username;
     check_not_registered_username();
     validate_name();
@@ -88,6 +87,7 @@ void changePassword(){
     profiles[username].passWord = encrypt(newPassword);
     load2File();
     cout << "\n\tsuccessful process " << char(1) << endl;
+    cout << "\n-------------------------------------------------------------\n";
 
 }
 
@@ -358,6 +358,7 @@ void login(){
         cin >> info.passWord;
     }
     cout << "Successful login, welcome  " << info.username << " " << char(1);
+    cout << "\n--------------------------------------------------------------------\n";
 }
 
 
