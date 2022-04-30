@@ -30,14 +30,12 @@ void registration()
 {
     cout << "Username : ";          cin >> info.username;
     check_not_registered_username();
-    validate_name();
 
     cout << "ID : ";                cin >> info.id;
     check_not_registered_ID();
 
     cout << "Email : ";             cin >> info.email;
     check_not_registered_Email();
-    validate_email();
 
     cout << "Phone number : ";      cin >> info.phoneNumber;
     validate_phone_number();
@@ -139,7 +137,7 @@ void cover_password()
 
 void validate_name()
 {
-    regex form("{8-20}((\\-)*[a-zA-Z]+(\\-)*[a-zA-z]*(\\-)*");
+    regex form("{8-20}([a-zA-Z-])");
     while(regex_match(info.username,form)==0)
     {
         cout << "invalid username...please try again:";
@@ -182,21 +180,22 @@ string username = info.username;
 
 void check_not_registered_username()
 {
-    for(int i=0;i<profiles.size();i++)
+    for(const auto profile : profiles)
     {
-        while(profiles[username].username == info.username)
+        while(profile.second.username == info.username)
         {
             cout << "used username!...please try again :";
             cin >> info.username;
+            validate_name();
         }
     }
 }
 
 void check_not_registered_ID()
 {
-    for(int i=0;i<profiles.size();i++)
+    for(const auto profile : profiles)
     {
-        while(profiles[username].id==info.id)
+        while(profile.second.id==info.id)
         {
             cout << "used ID !...please try again :";
             cin >> info.id;
@@ -206,12 +205,13 @@ void check_not_registered_ID()
 
 void check_not_registered_Email()
 {
-    for(int i=0;i<profiles.size();i++)
+    for(const auto profile : profiles)
     {
-        while(profiles[username].email==info.email)
+        while(profile.second.email==info.email)
         {
             cout << "used Email !...please try again :";
             cin >> info.email;
+            validate_email();
         }
     }
 }
