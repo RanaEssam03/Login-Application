@@ -44,9 +44,11 @@ void registration()
     validate_phone_number();
 
     cout << "password must contain at least 12 characters, uppercase and lowercase letters, numbers and at least one special character\n";
-    cout << "Password : ";          info.passWord=cover_password();
-    repeat_password();
+    cout << "Password : ";
+    info.passWord=cover_password();
     is_strong_password();
+    repeat_password();
+
     add_new_user();
 }
 
@@ -124,12 +126,65 @@ string  encrypt(string passWord ){  //Caesar Cipher with fixed key = 3
 
 void repeat_password()
 {
-
+    cout << "Password again : ";
+    string passwordAgain=cover_password();
+    while(passwordAgain != info.passWord)
+    {
+        cout << "ERROR : The two passwords are NOT the same.\n";
+        cout << "Password again : ";
+        passwordAgain = cover_password();
+    }
 }
 
 void is_strong_password()
 {
-
+    bool flag=false;
+    while(!flag)
+    {
+        if(info.passWord.size() >= 12)
+        {
+            int counter1=0,counter2=0,counter3=0,counter4=0;
+            for(int i=0; i < info.passWord.size(); i++)
+            {
+                if((int)info.passWord[i] >= 48 && (int)info.passWord[i] <= 57)
+                {
+                    counter1++;
+                }
+                else if(((int)info.passWord[i] >= 33 && (int)info.passWord[i] <= 47)
+                || ((int)info.passWord[i] >= 58 && (int)info.passWord[i] <= 64)
+                || ((int)info.passWord[i] >= 91 && (int)info.passWord[i] <= 96)
+                || ((int)info.passWord[i] >= 123 && (int)info.passWord[i] <= 126))
+                {
+                    counter2++;
+                }
+                else if((int)info.passWord[i] >= 65 && (int)info.passWord[i] <= 90)
+                {
+                    counter3++;
+                }
+                else if(((int)info.passWord[i] >= 97 && (int)info.passWord[i] <= 122))
+                {
+                    counter4++;
+                }
+            }
+            if((counter1 >= 1) && (counter2 >= 1) && (counter3 >= 1) && (counter4 >= 1) )
+            {
+                flag = true;
+                break;
+            }
+            else
+            {
+                cout << "Weak password!! password must have uppercase and lowercase letters, numbers and at least one special character.\n";
+                cout << "Password : ";
+                info.passWord =cover_password();
+            }
+        }
+        else
+        {
+            cout << "Short password!! password must be at least 12 character\n";
+            cout << "Password : ";
+            info.passWord =cover_password();
+        }
+    }
 }
 
 string cover_password()

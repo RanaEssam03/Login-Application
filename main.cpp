@@ -9,19 +9,16 @@ int main()
 
     while (true)
     {
-        //loadData();
+        loadData();
         cout << "Please pick one choice : ";
         cout << "\n1.Register\n2.Login\n3.Change Password\n4.Exit\n==>";
         int choice;
         cin >> choice;
-        //loadData();
-        //cin.ignore();
         if (choice == 1) registration();
         //else if (choice == 2) login();
         else if (choice == 3) changePassword();
         else if (choice == 4) break;
     }
-
 }
 
 
