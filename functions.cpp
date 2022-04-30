@@ -73,20 +73,13 @@ void changePassword(){
     }
     cout << "\n\t 'password must contain at least 12 characters, uppercase and lowercase letters, numbers and at least one special character'\n\n";
     cout << "Please enter a new password:  ";
-    newPassword = cover_password();
-
-    cout << "Please enter the new password again:  ";
-     newPassword2 = cover_password();
-    while(newPassword != newPassword2){
-        cout << "doesn't match ! \n";
-        cout << "Please enter the new password again: ";
-        newPassword2 = cover_password();
-    }
-
+    info.passWord = newPassword = cover_password();
+    is_strong_password();
+    repeat_password();
     profiles[username].passWord = encrypt(newPassword);
     load2File();
     cout << "\n\tsuccessful process " << char(1) << endl;
-    cout << "\n-------------------------------------------------------------\n";
+
 
 }
 
@@ -337,74 +330,41 @@ void check_not_registered_phone_number(){
         }
     }
 }
-void login(){
-    cout << "Please enter your \n";
-    cout << "Username : ";
-    cin >> info.username;
-    while (not existUserName(info.username)){
-        cout << "Please try again : ";
+void login() {
+    int trials = 0;
+    while (true) {
+        if (trials != 3) {
+        trials++;
+        cout << "\nPlease enter your \n";
+        cout << "Username : ";
         cin >> info.username;
-    }
-    cout << "Email : ";
-    cin >> info.email;
-    while (profiles[info.username].email !=  info.email){
-        cout << "This email does not match the username!\nPlease try again :  ";
+        while (not existUserName(info.username)) {
+            cout << "Please try again : ";
+            cin >> info.username;
+        }
+        cout << "Email : ";
         cin >> info.email;
-    }
-    cout << "Password :";
-    info.passWord = cover_password();
-    while (profiles[info.username].passWord != encrypt(info.passWord) ){
-        cout << "incorrect password!\nPlease try again: ";
+        while (profiles[info.username].email != info.email) {
+            cout << "This email does not match the username!\nPlease try again :  ";
+            cin >> info.email;
+        }
+        cout << "Password :";
         info.passWord = cover_password();
+        if (profiles[info.username].passWord != encrypt(info.passWord)) {
+            cout << "Wrong password........Failed login!\n-------------";
+        } else {
+            cout << "Successful login, welcome  " << info.username << " " << char(1);
+            break;
+        }
     }
-    cout << "Successful login, welcome  " << info.username << " " << char(1);
-    cout << "\n--------------------------------------------------------------------\n";
+    else
+    {
+        cout << "\nYour access to the system is denied !\n";
+        break;
+           }
+    }
 }
 
-
-
-
-//void register1() {
-//    cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";
-//    string password ;// username, password, password2;
-//    cout << "\nUserName ==> ";
-//    cin >> name.username;
-//    cout << "Email ==>";
-//    cin >> name.email ;
-//    validate_email();
-//    cout << "ID ==>";
-//    cin >> name.id;
-//    cout << "Password ==>";
-//    cin >> name.passWord;
-//    cout << "Password again ==>";
-//    cin>> password;
-//    while(password != name.passWord){
-//        cout << "passwords dont match .. please try again:";
-//        cin >> password;
-//    }
-//
-//}
-//void check_register(user & name ){
-//    string username = name.username;
-//    for(int i=0;i<profiles.size();i++){
-//     while(profiles[username].username == name.username){
-//         cout << "used username!...please try again:";
-//         cin>>name.username;
-//     }
-//     while(profiles[username].email==name.email){
-//         cout << "used email!...please try again:";
-//         cin >> name.email;
-//     }
-//     while(profiles[username].id==name.id){
-//         cout << "used id!...please try again:";
-//     }
-//
-// }
-//    cout << "Thanks for registration! "<<name.username<<endl;
-//    dataBase.open("dataBase.txt", ios :: app);
-//    dataBase << name.username << endl << name.passWord << endl << name.email << endl<<name.id<<endl;
-//    dataBase.close();
-//}
 
 
 

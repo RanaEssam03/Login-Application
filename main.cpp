@@ -7,6 +7,7 @@ int main()
 {
     while (true)
     {
+        cout << "\n--------------------------------------------------------------------\n";
         cout << "\t\tWelcome again " << char(1) << endl;
         loadData();
         cout << "\nPlease pick one choice : ";
@@ -22,6 +23,8 @@ int main()
             changePassword();
         else if (choice == 4)
             break;
+        else
+            cout << "Invalid option!";
     }
 
 
