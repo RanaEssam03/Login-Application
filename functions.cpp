@@ -30,14 +30,17 @@ void registration()
 {
     cout << "Username : ";          cin >> info.username;
     check_not_registered_username();
+    validate_name();
 
     cout << "ID : ";                cin >> info.id;
     check_not_registered_ID();
 
     cout << "Email : ";             cin >> info.email;
     check_not_registered_Email();
+    validate_email();
 
     cout << "Phone number : ";      cin >> info.phoneNumber;
+    validate_phone_number();
     validate_phone_number();
 
     cout << "password must contain at least 12 characters, uppercase and lowercase letters, numbers and at least one special character\n";
