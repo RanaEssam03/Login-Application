@@ -23,7 +23,7 @@ user info;
 
 void loadData();
 void registration();
-//void login();
+void login();
 void changePassword();
 string encrypt(string passWord );
 void load2File();
@@ -38,6 +38,8 @@ void check_not_registered_phone_number();
 string cover_password();
 void is_strong_password();
 void repeat_password();
+bool existUserName(string name);
+bool existEmail(string email);
 
 #endif //LOGIN_APPLICATION_FUNCTIONS_H
 

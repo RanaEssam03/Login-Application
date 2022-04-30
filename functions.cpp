@@ -54,30 +54,39 @@ void changePassword(){
     string username, email;
     cout << "Please enter username: ";
     cin >> username;
-    /*function to check if the username exists or not*/
+    while (not existUserName(username) ){
+        cout << "Please try again: ";
+        cin >> username;
+    }
     cout << "please enter email :";
     cin >> email;
-    /*function to check if the email matches the username*/
+    while (not existEmail(email)){
+        cout << "please try again: ";
+        cin >> email;
+    }
     string newPassword , oldPassword, newPassword2;
     cout << "Please enter old password : ";
-    cin >> oldPassword;
+    oldPassword = cover_password();
     while(encrypt(oldPassword) != profiles[username].passWord){
         cout << "wrong password!\nPlease try again: ";
-        cin >> oldPassword;
+        oldPassword = cover_password();
     }
-    cout << "Please enter a new password:  ";   /////(function to check if the password valid or not) is missed
-    cin >> newPassword;
-    //isValidPassword
+    cout << "\n\t 'password must contain at least 12 characters, uppercase and lowercase letters, numbers and at least one special character'\n\n";
+    cout << "Please enter a new password:  ";
+    newPassword = cover_password();
+
     cout << "Please enter the new password again:  ";
-    cin >> newPassword2;
+     newPassword2 = cover_password();
     while(newPassword != newPassword2){
         cout << "doesn't match ! \n";
         cout << "Please enter the new password again: ";
-        cin >> newPassword2;
+        newPassword2 = cover_password();
     }
+
     profiles[username].passWord = encrypt(newPassword);
     load2File();
     cout << "\n\tsuccessful process " << char(1) << endl;
+
 }
 
 void load2File(){
@@ -90,6 +99,7 @@ void load2File(){
         dataBase << profile.second.passWord << endl;
         dataBase << profile.second.email << endl ;
         dataBase << profile.second.id << endl;
+        dataBase << profile.second.phoneNumber << endl;
     }
     dataBase.close();
 }
@@ -216,6 +226,28 @@ void check_not_registered_username()
     }
 }
 
+bool existUserName(string name){
+    for (const auto profile : profiles){
+        while (profile.second.username == name){
+            return true;
+        }
+    }
+    cout << "username does not exist \n";
+    return false;
+}
+
+//__________________________________________________________________________________
+
+bool existEmail(string email){
+    for (const auto profile : profiles){
+        while (profile.second.email == email){
+            return true;
+        }
+    }
+    cout << "This email does not exist \n";
+    return false;
+}
+
 void check_not_registered_ID()
 {
     for(const auto profile : profiles)
@@ -250,6 +282,27 @@ void check_not_registered_phone_number(){
             validate_phone_number();
         }
     }
+}
+void login(){
+    cout << "Please enter your username: ";
+    cin >> info.username;
+    while (not existUserName(info.username)){
+        cout << "Please try again: ";
+        cin >> info.username;
+    }
+    cout << "Please enter your mail: ";
+    cin >> info.email;
+    while (profiles[info.username].email !=  info.email){
+        cout << "This email does not match the username!\nPlease try again:  ";
+        cin >> info.email;
+    }
+    cout << "Please enter your password:";
+    cin >> info.passWord;
+    while (profiles[info.username].passWord != encrypt(info.passWord) ){
+        cout << "incorrect password!\nPlease try again: ";
+        cin >> info.passWord;
+    }
+    cout << "Successful login, welcome  " << info.username << " " << char(1);
 }
 
 
@@ -301,65 +354,3 @@ void check_not_registered_phone_number(){
 
 
 
-//bool login(user name){
-//    char c;
-//    cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";
-//    string password2 ;// username, password, password2;
-//    cout << "\nUserName ==> ";
-//    cin >> name.username;
-//    cout << "Email ==>";
-//    cin >> name.email ;
-//    cout << "Password ==>";
-//    int i = 0 ;
-//    do {
-//        c = _getch();
-//        if (c != 8){
-//            name.passWord[i] = c;
-//            cout << "*";
-//            i++;
-//        }
-//        else name.passWord[i] = '\0';
-//    } while (i !=8);
-//    name.passWord[8] = '\02';
-//    cin >> name.passWord;
-//    ifstream dataBase;
-//    dataBase.open("dataBase.txt");
-//    while (! dataBase.eof()){
-//        string data ;
-//        getline(dataBase,data);
-//        if (data == name.username +" "+ name.passWord +" "+ name.email  ){
-//          return true;
-//        }
-//    }
-//    dataBase.close();
-//    return false;
-//}
-
-//string  encrypt(user & user ){  //Caesar Cipher with fixed key = 3
-// int length = user.passWord.size();
-// string passWord1 = user.passWord;
-//    int key = 3+ 26;
-//    key %= 26;
-//    string encrypted = "";
-//    for (int i=0; i < length; i++){
-//        char c = passWord1[i];
-//        if (c >= 'a' && c <= 'z') {
-//            c += key;
-//            if(abs(c)> 'z'){
-//                c= abs(c)-26;
-//            }
-//            encrypted += c;
-//        }else if (c >= 'A' && c <= 'Z'){
-//            c += key;
-//            if (abs(int(c)) > 'Z') {
-//                c = c - 'Z' + 'A' - 1;
-//            }
-//            encrypted += c;
-//        }
-// }
-//    return encrypted;
-//
-//}
-//
-//
-//
