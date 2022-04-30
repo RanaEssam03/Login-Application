@@ -363,7 +363,6 @@ void login(){
 
 
 
-
 //void register1() {
 //    cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";
 //    string password ;// username, password, password2;
