@@ -1,7 +1,6 @@
 #include "functions.h"
 
 void loadData(){
-  //  user user ;
     dataBase.open("dataBase.txt", ios:: in);
 
     while(! dataBase.eof()){
@@ -56,13 +55,13 @@ void changePassword(){
     cout << "Please enter username: ";
     cin >> username;
     while (not existUserName(username) ){
-        cout << "Please try again: ";
+        cout << "Please try again : ";
         cin >> username;
     }
     cout << "please enter email :";
     cin >> email;
     while (not existEmail(email)){
-        cout << "please try again: ";
+        cout << "please try again : ";
         cin >> email;
     }
     string newPassword , oldPassword, newPassword2;
@@ -339,23 +338,24 @@ void check_not_registered_phone_number(){
     }
 }
 void login(){
-    cout << "Please enter your username: ";
+    cout << "Please enter your \n";
+    cout << "Username : ";
     cin >> info.username;
     while (not existUserName(info.username)){
-        cout << "Please try again: ";
+        cout << "Please try again : ";
         cin >> info.username;
     }
-    cout << "Please enter your mail: ";
+    cout << "Email : ";
     cin >> info.email;
     while (profiles[info.username].email !=  info.email){
-        cout << "This email does not match the username!\nPlease try again:  ";
+        cout << "This email does not match the username!\nPlease try again :  ";
         cin >> info.email;
     }
-    cout << "Please enter your password:";
-    cin >> info.passWord;
+    cout << "Password :";
+    info.passWord = cover_password();
     while (profiles[info.username].passWord != encrypt(info.passWord) ){
         cout << "incorrect password!\nPlease try again: ";
-        cin >> info.passWord;
+        info.passWord = cover_password();
     }
     cout << "Successful login, welcome  " << info.username << " " << char(1);
     cout << "\n--------------------------------------------------------------------\n";
