@@ -1,4 +1,6 @@
+#include "functions.h"
 #include "functions.cpp"
+
 using namespace std;
 
 int main()
@@ -15,7 +17,7 @@ int main()
         cin.ignore();
 
         if (choice == 1) registration();
-        else if (choice == 2) login();
+        //else if (choice == 2) login();
         else if (choice == 3) changePassword();
         else if (choice == 4) break;
     }
