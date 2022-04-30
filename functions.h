@@ -23,7 +23,7 @@ user info;
 
 void loadData();
 void registration();
-void login();
+//void login();
 void changePassword();
 string  encrypt(string passWord );
 void load2File();
