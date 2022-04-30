@@ -3,5 +3,5 @@ project(Login_Application)
 
 set(CMAKE_CXX_STANDARD 14)
 set(functions.h)
-add_executable(Login_Application
+add_executable(Login_Application1
         main.cpp)
