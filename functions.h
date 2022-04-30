@@ -34,6 +34,7 @@ void validate_phone_number();
 void check_not_registered_Email();
 void check_not_registered_ID();
 void check_not_registered_username();
+void check_not_registered_phone_number();
 void cover_password();
 void is_strong_password();
 void repeat_password();

@@ -137,11 +137,12 @@ void cover_password()
 
 void validate_name()
 {
-    regex form("{8-20}([a-zA-Z-])");
+    regex form("[a-zA-Z\\-]+");
     while(regex_match(info.username,form)==0)
     {
         cout << "invalid username...please try again:";
         cin >> info.username;
+        check_not_registered_username();
         regex_match(info.username,form);
     }
 }
@@ -153,6 +154,7 @@ void validate_phone_number()
     {
         cout << "invalid phone number...please try again:";
         cin >> info.phoneNumber;
+        check_not_registered_phone_number();
         regex_match(info.phoneNumber,form);
     }
 }
@@ -164,6 +166,7 @@ void validate_email()
     {
         cout << "invalid email!..please try again:";
         cin >> info.email;
+        check_not_registered_Email();
         regex_match(info.email,form);
     }
 }
@@ -215,6 +218,19 @@ void check_not_registered_Email()
         }
     }
 }
+void check_not_registered_phone_number(){
+    for(int i=0;i<profiles.size();i++)
+    {
+        while(profiles[username].phoneNumber==info.phoneNumber)
+        {
+            cout << "used phone number !...please try again :";
+            cin >> info.phoneNumber;
+            validate_phone_number();
+        }
+    }
+
+}
+
 
 
 
