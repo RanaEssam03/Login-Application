@@ -31,9 +31,13 @@ void register1() {
     string password ;// username, password, password2;
     cout << "\nUserName ==> ";
     cin >> name.username;
+    validate_username();
     cout << "Email ==>";
     cin >> name.email ;
     validate_email();
+    cout << "Phone number ==>";
+    cin>>name.phoneNumber;
+    validate_number();
     cout << "ID ==>";
     cin >> name.id;
     cout << "Password ==>";
@@ -52,13 +56,21 @@ void check_register(user & name ){
      while(profiles[username].username == name.username){
          cout << "used username!...please try again:";
          cin>>name.username;
+         validate_username();
      }
      while(profiles[username].email==name.email){
          cout << "used email!...please try again:";
          cin >> name.email;
+         validate_email();
      }
      while(profiles[username].id==name.id){
          cout << "used id!...please try again:";
+         cin >> name.id;
+     }
+     while(profiles[username].phoneNumber == name.phoneNumber){
+         cout << "used phone number...please try again:";
+         cin >> name.phoneNumber;
+         validate_number();
      }
 
  }
@@ -111,8 +123,22 @@ void validate_email(){
      cin >> name.email;
      regex_match(name.email,form);
     }
-
-
+}
+void validate_number(){
+    regex form ("01(0|1|2|5)[0-9]{8}");
+    while(regex_match(name.phoneNumber,form)==0){
+        cout << "invalid phone number...please try again:";
+        cin >> name.phoneNumber;
+        regex_match(name.phoneNumber,form);
+    }
+}
+void validate_username(){
+    regex form("{8-20}((\\-)*[a-zA-Z]+(\\-)*[a-zA-z]*(\\-)*");
+    while(regex_match(name.username,form)==0){
+        cout << "invalid username...please try again:";
+        cin >> name.username;
+        regex_match(name.username,form);
+    }
 
 }
 
