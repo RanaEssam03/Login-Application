@@ -25,7 +25,7 @@ void loadData();
 void registration();
 //void login();
 void changePassword();
-string  encrypt(string passWord );
+string encrypt(string passWord );
 void load2File();
 void add_new_user();
 void validate_email();
@@ -35,7 +35,7 @@ void check_not_registered_Email();
 void check_not_registered_ID();
 void check_not_registered_username();
 void check_not_registered_phone_number();
-void cover_password();
+string cover_password();
 void is_strong_password();
 void repeat_password();
 

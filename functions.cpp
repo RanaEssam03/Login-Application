@@ -41,7 +41,6 @@ void registration()
 
     cout << "Phone number : ";      cin >> info.phoneNumber;
     validate_phone_number();
-    validate_phone_number();
 
     cout << "password must contain at least 12 characters, uppercase and lowercase letters, numbers and at least one special character\n";
     cout << "Password : ";          cin >> info.passWord;
@@ -133,9 +132,23 @@ void is_strong_password()
 
 }
 
-void cover_password()
+string cover_password()
 {
-    
+    string ipt = "";
+    char ipt_ch;
+    while (true) {
+        ipt_ch = getch();
+
+        // Check whether user enters
+        // a special non-printable
+        // character
+        if (ipt_ch < 32) {
+            cout << endl;
+            return ipt;
+        }
+        cout << '*';
+        ipt.push_back(ipt_ch);
+    }
 }
 
 void validate_name()
@@ -222,16 +235,15 @@ void check_not_registered_Email()
     }
 }
 void check_not_registered_phone_number(){
-    for(int i=0;i<profiles.size();i++)
+    for(const auto profile : profiles)
     {
-        while(profiles[username].phoneNumber==info.phoneNumber)
+        while(profile.second.phoneNumber==info.phoneNumber)
         {
             cout << "used phone number !...please try again :";
             cin >> info.phoneNumber;
             validate_phone_number();
         }
     }
-
 }
 
 
