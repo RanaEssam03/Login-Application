@@ -23,7 +23,7 @@ void loadData(){
     }
     dataBase.close();
 }
-
+//___________________________________________________________
 void registration()
 {
     cout << "Username : ";          cin >> info.username;
@@ -49,7 +49,7 @@ void registration()
 
     add_new_user();
 }
-
+//___________________________________________________________
 void changePassword(){
     string username, email;
     cout << "Please enter username: ";
@@ -79,10 +79,8 @@ void changePassword(){
     profiles[username].passWord = encrypt(newPassword);
     load2File();
     cout << "\n\tsuccessful process " << char(1) << endl;
-
-
 }
-
+//___________________________________________________________
 void load2File(){
     dataBase.open("dataBase.txt", ios::trunc);
     dataBase.close();
@@ -97,7 +95,7 @@ void load2File(){
     }
     dataBase.close();
 }
-
+//___________________________________________________________
 string  encrypt(string passWord ){  //Caesar Cipher with fixed key = 3
     int length = passWord.size();
     string passWord1 = passWord;
@@ -125,7 +123,7 @@ string  encrypt(string passWord ){  //Caesar Cipher with fixed key = 3
     }
     return encrypted;
 }
-
+//___________________________________________________________
 void repeat_password()
 {
     cout << "Password again : ";
@@ -137,7 +135,7 @@ void repeat_password()
         passwordAgain = cover_password();
     }
 }
-
+//___________________________________________________________
 void is_strong_password()
 {
     bool flag=false;
@@ -188,7 +186,7 @@ void is_strong_password()
         }
     }
 }
-
+//___________________________________________________________
 string cover_password()
 {
     string password = "";
@@ -215,6 +213,7 @@ string cover_password()
         cout << '*';
     }
 }
+//___________________________________________________________
 void validate_name()
 {
     regex form("[a-zA-Z\\-]+");
@@ -226,7 +225,7 @@ void validate_name()
         regex_match(info.username,form);
     }
 }
-
+//___________________________________________________________
 void validate_phone_number()
 {
     regex form ("01(0|1|2|5)[0-9]{8}");
@@ -238,7 +237,7 @@ void validate_phone_number()
         regex_match(info.phoneNumber,form);
     }
 }
-
+//___________________________________________________________
 void validate_email()
 {
     regex form("(\\w+)@[a-zA-Z0-9]+[a-zA-Z0-9\\-]*(\\.[a-zA-Z0-9\\-]+)+[a-zA-Z0-9]+"); // /w matches any character in any case
@@ -250,16 +249,14 @@ void validate_email()
         regex_match(info.email,form);
     }
 }
-
+//___________________________________________________________
 void add_new_user()
 {   cout << "Thanks for registration! "<<info.username<<endl;
     dataBase.open("dataBase.txt", ios :: app);
     dataBase << info.username << endl << encrypt(info.passWord) << endl << info.email << endl << info.id << endl << info.phoneNumber << endl;
     dataBase.close();
 }
-
-string username = info.username;
-
+//___________________________________________________________
 void check_not_registered_username()
 {
     for(const auto profile : profiles)
@@ -272,7 +269,7 @@ void check_not_registered_username()
         }
     }
 }
-
+//___________________________________________________________
 bool existUserName(string name){
     for (const auto profile : profiles){
         while (profile.second.username == name){
@@ -294,7 +291,7 @@ bool existEmail(string email){
     cout << "This email does not exist \n";
     return false;
 }
-
+//___________________________________________________________
 void check_not_registered_ID()
 {
     for(const auto profile : profiles)
@@ -306,7 +303,7 @@ void check_not_registered_ID()
         }
     }
 }
-
+//___________________________________________________________
 void check_not_registered_Email()
 {
     for(const auto profile : profiles)
@@ -319,6 +316,7 @@ void check_not_registered_Email()
         }
     }
 }
+//___________________________________________________________
 void check_not_registered_phone_number(){
     for(const auto profile : profiles)
     {
@@ -330,6 +328,7 @@ void check_not_registered_phone_number(){
         }
     }
 }
+//___________________________________________________________
 void login() {
     int trials = 0;
     while (true) {

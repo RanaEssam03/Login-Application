@@ -8,9 +8,7 @@
 #include<cstring>
 #include<map>
 #include<vector>
-
 using namespace std;
-fstream dataBase;
 struct user{
     string username="a";
     string passWord="a";
@@ -20,7 +18,8 @@ struct user{
 };
 map<string,user>profiles;
 user info;
-
+fstream dataBase;
+//_____________________________________________________________
 void loadData();
 void registration();
 void login();
@@ -43,18 +42,6 @@ bool existEmail(string email);
 
 #endif //LOGIN_APPLICATION_FUNCTIONS_H
 
-
-
-//vector <user> profiles ;
-
-//void register1() ;
-//void check_register(user & name);
-//void validate_email();
-//void validate_number();
-//void validate_username();
-//void loadData();
-//bool login(user name);
-//void loadData();
 
 
 

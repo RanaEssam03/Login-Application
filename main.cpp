@@ -1,8 +1,6 @@
 #include "functions.h"
 #include "functions.cpp"
 
-using namespace std;
-
 int main()
 {
     while (true)
@@ -26,26 +24,8 @@ int main()
         else
             cout << "Invalid option!";
     }
-
-
 }
 
-
-//         user name ;
-//         if (login(name)){
-//             cout << "successful Login " << char(1) << endl ;
-//         }
-//         else {
-//             cout << "\tFailed!"<< endl;
-//         }
-//     }
-
-//    else if (choice == 3)
-//        changePassword();
-
-//     if (choice == 4)
-//        break;
-//    }
 
 
 
