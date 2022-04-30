@@ -216,72 +216,7 @@ void check_not_registered_Email()
     }
 }
 
-}
-//____________________________________________________________________________________
 
-string  encrypt(string passWord ){  //Caesar Cipher with fixed key = 3
- int length = passWord.size();
- string passWord1 = passWord;
-    int key = 3+ 26;
-    key %= 26;
-    string encrypted = "";
-    for (int i=0; i < length; i++){
-        char c = passWord1[i];
-        if (c >= 'a' && c <= 'z') {
-            c += key;
-            if(abs(c)> 'z'){
-                c= abs(c)-26;
-            }
-            encrypted += c;
-        }else if (c >= 'A' && c <= 'Z'){
-            c += key;
-            if (abs(int(c)) > 'Z') {
-                c = c - 'Z' + 'A' - 1;
-            }
-            encrypted += c;
-        }
-        else {
-            encrypted+= c;
-        }
- }
-    return encrypted;
-}
-//__________________________________________________________________________________________
-void changePassword(){
-    string username, email;
-    cout << "Please enter username: ";
-    cin >> username;
-    /*function to check if the username exists or not*/
-    cout << "please enter email :";
-    cin >> email;
-    /*function to check if the email matches the username*/
-    string newPassword , oldPassword, newPassword2;
-    cout << "Please enter old password : ";
-    cin >> oldPassword;
-    while(encrypt(oldPassword) != profiles[username].passWord){
-        cout << "wrong password!\nPlease try again: ";
-        cin >> oldPassword;
-    }
-    cout << "Please enter a new password:  ";   /////(function to check if the password valid or not) is missed
-    cin >> newPassword;
-    //isValidPassword
-    cout << "Please enter the new password again:  ";
-    cin >> newPassword2;
-    while(newPassword != newPassword2){
-        cout << "doesn't match ! \n";
-        cout << "Please enter the new password again: ";
-        cin >> newPassword2;
-    }
-    profiles[username].passWord = encrypt(newPassword);
-    load2File();
-    cout << "\n\tsuccessful process " << char(1) << endl;
-}
-//________________________________________________________________________________________
-void load2File(){
-    dataBase.open("dataBase.txt", ios::trunc);
-    dataBase.close();
-    dataBase.open("dataBase.txt", ios :: out);
-    for (const auto profile : profiles){
 
 
 //void register1() {
