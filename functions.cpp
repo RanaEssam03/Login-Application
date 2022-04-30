@@ -27,7 +27,7 @@ void loadData(){
 
 void registration()
 {
-    loadData();
+    //loadData();
     cout << "Username : ";          cin >> info.username;
     check_not_registered_username();
     validate_name();
