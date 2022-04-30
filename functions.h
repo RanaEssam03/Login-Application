@@ -21,9 +21,6 @@ struct user{
 map<string,user>profiles;
 user name;
 
-vector <user> data ;
-
-
 void register1() ;
 void check_register(user & name);
 void validate_email();

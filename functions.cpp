@@ -1,13 +1,11 @@
 #include "functions.h"
 
-
 void loadData(){
     user user ;
     dataBase.open("dataBase.txt", ios:: in);
 
     while(! dataBase.eof()){
             string data;
-
             getline(dataBase, data);
               string temp = data;
             profiles[temp].username = data;
@@ -19,18 +17,16 @@ void loadData(){
 
             getline(dataBase, data);
             profiles[temp].id =data ;
-
     }
     dataBase.close();
-
 }
-
+//_______________________________________________________________
 void register1() {
     cout << "Please enter :";//
     string password, password2 ;
     cout << "\nUserName ==> ";
     cin >> name.username;
-    validate_username();
+    //validate_username();
     cout << "Email ==>";
     cin >> name.email ;
     validate_email();
@@ -50,6 +46,7 @@ void register1() {
     name.passWord = encrypt(password);
 
 }
+//_________________________________________________________________________
 void check_register(user & name ){
     string username = name.username;
 
@@ -58,7 +55,7 @@ void check_register(user & name ){
             while (profile.second.username == name.username) {
                 cout << "used username!...please try again:";
                 cin >> name.username;
-                 validate_username();
+                 //validate_username();
             }
             while (profile.second.email == name.email) {
                 cout << "used email!...please try again:";
@@ -82,45 +79,7 @@ void check_register(user & name ){
     dataBase << name.username << endl << name.passWord << endl << name.email << endl<<name.id<<endl;
     dataBase.close();
 }
-
-
-
-
-//bool login(user name){
-//    char c;
-//    cout << "Please enter :";//  \n1.Username \n 2. Password \n 2.Password again  ";
-//    string password2 ;// username, password, password2;
-//    cout << "\nUserName ==> ";
-//    cin >> name.username;
-//    cout << "Email ==>";
-//    cin >> name.email ;
-//    cout << "Password ==>";
-//    int i = 0 ;
-//    do {
-//        c = _getch();
-//        if (c != 8){
-//            name.passWord[i] = c;
-//            cout << "*";
-//            i++;
-//        }
-//        else name.passWord[i] = '\0';
-//    } while (i !=8);
-////    name.passWord[8] = '\02';
-//    //cin >> name.passWord;
-//    ifstream dataBase;
-//    dataBase.open("dataBase.txt");
-//    while (! dataBase.eof()){
-//        string data ;
-//        getline(dataBase,data);
-//        if (data == name.username +" "+ name.passWord +" "+ name.email  ){
-//          return true;
-//        }
-//    }
-//    dataBase.close();
-//    return false;
-//}
-
-
+//_________________________________________________________________________
 void validate_email(){
     regex form("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+"); // /w matches any character in any case
     while(regex_match(name.email,form)==0){
@@ -129,6 +88,7 @@ void validate_email(){
      regex_match(name.email,form);
     }
 }
+//_______________________________________________________________________________
 void validate_number(){
     regex form ("01(0|1|2|5)[0-9]{8}");
     while(regex_match(name.phoneNumber,form)==0){
@@ -137,6 +97,7 @@ void validate_number(){
         regex_match(name.phoneNumber,form);
     }
 }
+//__________________________________________________________________________
 void validate_username(){
     regex form("{8-20}((\\-)*[a-zA-Z]+(\\-)*[a-zA-z]*(\\-)*");
     while(regex_match(name.username,form)==0){
@@ -146,9 +107,7 @@ void validate_username(){
     }
 
 }
-
-
-
+//____________________________________________________________________________________
 
 string  encrypt(string passWord ){  //Caesar Cipher with fixed key = 3
  int length = passWord.size();
@@ -171,10 +130,13 @@ string  encrypt(string passWord ){  //Caesar Cipher with fixed key = 3
             }
             encrypted += c;
         }
+        else {
+            encrypted+= c;
+        }
  }
     return encrypted;
 }
-
+//__________________________________________________________________________________________
 void changePassword(){
     string username, email;
     cout << "Please enter username: ";
@@ -204,7 +166,7 @@ void changePassword(){
     load2File();
     cout << "\n\tsuccessful process " << char(1) << endl;
 }
-
+//________________________________________________________________________________________
 void load2File(){
     dataBase.open("dataBase.txt", ios::trunc);
     dataBase.close();
@@ -218,6 +180,6 @@ void load2File(){
     }
    dataBase.close();
 }
-
+//_________________________________________________________________________________________
 
 
