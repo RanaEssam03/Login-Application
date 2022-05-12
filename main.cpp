@@ -1,5 +1,4 @@
 #include "functions.h"
-#include "functions.cpp"
 
 int main()
 {
@@ -7,13 +6,13 @@ int main()
     {
         cout << "\n--------------------------------------------------------------------\n";
         cout << "\t\tWelcome again " << char(1) << endl;
-        loadData();
         cout << "\nPlease pick one choice : ";
         cout << "\n1.Register\n2.Login\n3.Change Password\n4.Exit\n==>";
+        loadData();
         int choice;
         cin >> choice;
         cin.ignore();
-        if (choice == 1)
+        if (choice == 1) 
             registration();
         else if (choice == 2)
          login();
@@ -24,6 +23,7 @@ int main()
         else
             cout << "Invalid option!";
     }
+    
 }
 
 

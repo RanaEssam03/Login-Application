@@ -1,5 +1,18 @@
 #include "functions.h"
 
+//int code = 0;
+bool flagflag = false;
+struct user {
+    string username = "a";
+    string passWord = "a";
+    string email = "a";
+    string id = "a";
+    string phoneNumber = "a";
+};
+map<string, user>profiles;
+user info;
+fstream dataBase;
+
 void loadData(){
     dataBase.open("dataBase.txt", ios:: in);
 
@@ -54,13 +67,13 @@ void changePassword(){
     string username, email;
     cout << "Please enter username: ";
     cin >> username;
-    while (not existUserName(username) ){
+    while (! existUserName(username) ){
         cout << "Please try again : ";
         cin >> username;
     }
     cout << "please enter email :";
     cin >> email;
-    while (not existEmail(email)){
+    while (! existEmail(email)){
         cout << "please try again : ";
         cin >> email;
     }
@@ -73,10 +86,10 @@ void changePassword(){
     }
     cout << "\n\t 'password must contain at least 12 characters, uppercase and lowercase letters, numbers and at least one special character'\n\n";
     cout << "Please enter a new password:  ";
-    info.passWord = newPassword = cover_password();
+    info.passWord = cover_password();
     is_strong_password();
     repeat_password();
-    profiles[username].passWord = encrypt(newPassword);
+    profiles[username].passWord = encrypt(info.passWord);
     load2File();
     cout << "\n\tsuccessful process " << char(1) << endl;
 }
@@ -329,42 +342,159 @@ void check_not_registered_phone_number(){
     }
 }
 //___________________________________________________________
-void login() {
+int login() {
     int trials = 0;
     while (true) {
         if (trials != 3) {
-        trials++;
-        cout << "\nPlease enter your \n";
-        cout << "Username : ";
-        cin >> info.username;
-        while (not existUserName(info.username)) {
-            cout << "Please try again : ";
+            trials++;
+            cout << "\nPlease enter your \n";
+            cout << "Username : ";
             cin >> info.username;
-        }
-        cout << "Email : ";
-        cin >> info.email;
-        while (profiles[info.username].email != info.email) {
-            cout << "This email does not match the username!\nPlease try again :  ";
+            while (!existUserName(info.username)) {
+                cout << "Please try again : ";
+                cin >> info.username;
+            }
+            cout << "Email : ";
             cin >> info.email;
+            while (profiles[info.username].email != info.email) {
+                cout << "This email does not match the username!\nPlease try again :  ";
+                cin >> info.email;
+            }
+            cout << "If you don't remember your password -> enter f\nif not -> enter c to continue\n---> ";
+            char s;
+            cin.ignore();
+            cin >> s;
+            if (s == 'f')
+            {
+                forgetPassword();
+                if (flagflag == true)
+                {
+                    return 0;
+                }
+                else
+                {
+                    cout << "Successful login, welcome  " << info.username << " " << char(1);
+                    return 0;
+                }
+            }
+            else {
+                cout << "Password :";
+                info.passWord = cover_password();
+                if (profiles[info.username].passWord != encrypt(info.passWord)) {
+                    cout << "Wrong password........Failed login!\n-------------";
+                }
+                else {
+                    cout << "Successful login, welcome  " << info.username << " " << char(1);
+                    break;
+                    return 0;
+                }
+            }
         }
-        cout << "Password :";
-        info.passWord = cover_password();
-        if (profiles[info.username].passWord != encrypt(info.passWord)) {
-            cout << "Wrong password........Failed login!\n-------------";
-        } else {
-            cout << "Successful login, welcome  " << info.username << " " << char(1);
+        else
+        {
+            cout << "\nYour access to the system is denied !\n";
             break;
+            return 0;
         }
-    }
-    else
-    {
-        cout << "\nYour access to the system is denied !\n";
-        break;
-           }
     }
 }
 
+const int ConnectNormal = 0;
+const int ConnectSSLAuto = 1;
+const int ConnectSTARTTLS = 2;
+const int ConnectDirectSSL = 3;
+const int ConnectTryTLS = 4;
 
+int sendEmail()
+{
+    ::CoInitialize(NULL);
+
+    IMailPtr oSmtp = NULL;
+    oSmtp.CreateInstance(__uuidof(EASendMailObjLib::Mail));
+    oSmtp->LicenseCode = _T("TryIt");
+
+    // Set your sender email address
+    oSmtp->FromAddr = _T("AsmaaIHeikal@gmail.com");
+    // Add recipient email address
+    char a[30];
+    int c=0;
+    for(char i:info.email)
+    {
+        a[c]=i;
+        c++;
+    }
+    a[info.email.size()] = '\0';
+    oSmtp->AddRecipientEx(a, 0);
+
+    // Set email subject
+    oSmtp->Subject = _T("Your verification code");
+    // Set email body
+    /* srand(time(0));
+    code = (rand() % 1000);
+    string x = to_string(code);
+    char b[20];
+    int d = 0;
+    for (char i : x)
+    {
+        b[d] = i;
+        d++;
+    }
+    b[info.email.size()] = '\0';*/
+    oSmtp->BodyText = _T("285571");
+
+    // Your SMTP server address
+    oSmtp->ServerAddr = _T("smtp.gmail.com");
+
+    // User and password for ESMTP authentication, if your server doesn't
+    // require User authentication, please remove the following codes.
+    oSmtp->UserName = _T("AsmaaIHeikal@gmail.com");
+    oSmtp->Password = _T("wuukyzbewwrgbyxz");
+
+    // Most mordern SMTP servers require SSL/TLS connection now.
+    // ConnectTryTLS means if server supports SSL/TLS, SSL/TLS will be used automatically.
+    oSmtp->ConnectType = ConnectTryTLS;
+
+    // If your SMTP server uses 587 port
+    oSmtp->ServerPort = 587;
+
+    // If your SMTP server requires SSL/TLS connection on 25/587/465 port
+    // oSmtp->ServerPort = 25; // 25 or 587 or 465
+    // oSmtp->ConnectType = ConnectSSLAuto;
+
+    _tprintf(_T("Start to send email ...\r\n"));
+
+    if (oSmtp->SendMail() == 0)
+    {
+        _tprintf(_T("email was sent successfully!\r\n"));
+    }
+    else
+    {
+        _tprintf(_T("failed to send email with the following error: %s\r\n"),
+                 (const TCHAR*)oSmtp->GetLastErrDescription());
+    }
+
+    return 0;
+}
+
+int forgetPassword()
+{
+    cout << "You will recieve a verification code on your email" << endl;
+    sendEmail();
+    cout << "Enter the code : ";
+    long long int s;
+    cin.ignore();
+    cin >> s;
+    if (s == 285571)
+    {
+        cout << "Enter your data again to change password" << endl;
+        changePassword();
+    }
+    else {
+        cout << "Try again later";
+        flagflag = true;
+        return 0;
+    }
+}
 
 
 

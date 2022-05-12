@@ -8,21 +8,18 @@
 #include<cstring>
 #include<map>
 #include<vector>
+#include <tchar.h>
+#include <Windows.h>
+#include<time.h>
+#include "EASendMailObj.tlh"
+using namespace EASendMailObjLib;
+
 using namespace std;
-struct user{
-    string username="a";
-    string passWord="a";
-    string email="a";
-    string id="a";
-    string phoneNumber="a";
-};
-map<string,user>profiles;
-user info;
-fstream dataBase;
+
 //_____________________________________________________________
 void loadData();
 void registration();
-void login();
+int login();
 void changePassword();
 string encrypt(string passWord );
 void load2File();
@@ -39,6 +36,8 @@ void is_strong_password();
 void repeat_password();
 bool existUserName(string name);
 bool existEmail(string email);
+int sendEmail();
+int forgetPassword();
 
 #endif //LOGIN_APPLICATION_FUNCTIONS_H
 
