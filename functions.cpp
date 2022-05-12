@@ -73,10 +73,10 @@ void changePassword(){
     }
     cout << "\n\t 'password must contain at least 12 characters, uppercase and lowercase letters, numbers and at least one special character'\n\n";
     cout << "Please enter a new password:  ";
-    info.passWord = newPassword = cover_password();
+    info.passWord = cover_password();
     is_strong_password();
     repeat_password();
-    profiles[username].passWord = encrypt(newPassword);
+    profiles[username].passWord = encrypt(info.passWord);
     load2File();
     cout << "\n\tsuccessful process " << char(1) << endl;
 }
